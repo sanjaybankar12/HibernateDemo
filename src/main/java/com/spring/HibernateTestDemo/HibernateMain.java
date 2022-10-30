@@ -30,14 +30,11 @@ public class HibernateMain
 		Session s = sf.openSession();
 		Transaction tr = s.beginTransaction();
 		
-		Movie m = new Movie();
-		m.setName("Dil Chahata hai");
-		Map<String, String> hm = new HashMap<>();
-		hm.put("actor", "Amir");
-		hm.put("actress", "Priti");
-		m.setHm(hm );
-	
-		s.save(m);
+		Employee e = new Employee();
+		e.setName("ravi");
+		e.setSalary(45000);
+		
+		s.save(e);
 		
 		tr.commit();
 		s.clear();

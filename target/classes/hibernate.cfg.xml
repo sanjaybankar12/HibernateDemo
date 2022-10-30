@@ -13,7 +13,7 @@
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>	
 		
-		<mapping resource="movie.hbm.xml"/>	
+		<mapping class="com.spring.HibernateTestDemo.Employee"/>	
 		
 	</session-factory>
 </hibernate-configuration>

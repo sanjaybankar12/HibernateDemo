@@ -1,9 +1,18 @@
 package com.spring.HibernateTestDemo;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="emp_tab")
 public class Employee {
 
+	@Id
+	@GeneratedValue(strategy =  GenerationType.AUTO)
+	@Column(name="ID",unique=true)
 	private int id;
+	@Column(name="NAME",nullable=true)
 	private String name;
+	@Column(name="SALARY",nullable=true)
 	private int salary;
 	
 	public int getId() {
