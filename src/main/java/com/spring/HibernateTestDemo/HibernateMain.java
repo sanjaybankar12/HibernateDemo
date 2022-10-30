@@ -2,6 +2,10 @@ package com.spring.HibernateTestDemo;
 
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,24 +28,25 @@ public class HibernateMain
 		Session s = sf.openSession();
 		Transaction tr = s.beginTransaction();
 		
-		Employee e  =new Employee();
-		e.setName("Abc");
-		e.setSalary(60000);		
-		s.save(e);
+		Movie m = new Movie();
+		m.setId(1);
+		m.setName("Dil Chahata hai");
+		List<Song> songs = new ArrayList<>();
+		Song s1 = new Song();
+		s1.setId(1);
+		s1.setName("dil chahata hai");
+		songs.add(s1);
 		
-		WageEmployee we = new WageEmployee();
-		we.setName("ravi");
-		we.setSalary(35000);
-		we.setHr(12);
-		we.setRate(200);
-		s.save(we);
+		Song s2 = new Song();
+		s2.setId(2);
+		s2.setName("Jane kyun");
+		songs.add(s2);
 		
-
-		SalesPerson sp = new SalesPerson();
-		sp.setName("Sham");
-		sp.setSalary(15000);
-		sp.setComm(500);
-		s.save(sp);
+		m.setSongs(songs );
+		
+		s.save(s1);
+		s.save(s2);
+		s.save(m);
 		
 		tr.commit();
 		s.clear();

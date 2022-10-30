@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.spring.HibernateTestDemo.Movie" table="movie_tab">
+		<id name="id" column="M_ID" type="int">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="name" column="MOVIE_NAME" type="string"></property>
+		<list name="songs"  cascade="all">
+			<key column="MOVIE_ID"></key>
+			<index column="SONG_INDX"></index>
+			<one-to-many class="com.spring.HibernateTestDemo.Song"></one-to-many>
+		</list>		
+	</class>
+	
+	<class name="com.spring.HibernateTestDemo.Song" table="song_tab">
+		<id name="id" column="S_ID" type="int">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="name" column="SONG_NAME" type="string"></property>	
+	</class>
+</hibernate-mapping>

@@ -13,7 +13,7 @@
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>	
 		
-		<mapping resource="emp.hbm.xml"/>	
+		<mapping resource="movie.hbm.xml"/>	
 		
 	</session-factory>
 </hibernate-configuration>
