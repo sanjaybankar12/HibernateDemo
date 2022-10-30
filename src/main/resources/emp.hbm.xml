@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.spring.HibernateTestDemo.Employee" table="emp_tab">
+		<id name="id" column="EMP_ID" type="int">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name" column="EMP_NAME" type="string"></property>
+		<property name="salary">
+			<column name="SALARY"></column>
+			<type name="int"></type>
+		</property>
+		
+		<union-subclass name="com.spring.HibernateTestDemo.WageEmployee" table="wage_tab">
+			<property name="hr" column="HOUR" type="int"></property>
+			<property name="rate" column="RATE" type="int"></property>
+		</union-subclass>
+		
+		<union-subclass name="com.spring.HibernateTestDemo.SalesPerson" table="sales_tab">
+			<property name="comm" column="COMM" type="int"></property>
+		</union-subclass>
+	</class>
+</hibernate-mapping>
