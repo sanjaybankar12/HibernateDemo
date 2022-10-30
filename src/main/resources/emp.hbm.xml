@@ -3,25 +3,24 @@
 <!DOCTYPE hibernate-mapping SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.spring.HibernateTestDemo.Employee" table="emp_tab">
+	<class name="com.spring.HibernateTestDemo.Employee" table="emp_tab" discriminator-value="e">
 		<id name="id" column="EMP_ID" type="int">
 			<generator class="increment"></generator>
 		</id>
+		<discriminator column="EMP_TYPE" type="string"></discriminator>		
 		<property name="name" column="EMP_NAME" type="string"></property>
 		<property name="salary">
 			<column name="SALARY"></column>
 			<type name="int"></type>
 		</property>
 		
-		<joined-subclass name="com.spring.HibernateTestDemo.WageEmployee" table="wage_tab">
-			<key column="EMP_ID"></key>
+		<subclass name="com.spring.HibernateTestDemo.WageEmployee" discriminator-value="we">
 			<property name="hr" column="HOUR" type="int"></property>
 			<property name="rate" column="RATE" type="int"></property>
-		</joined-subclass>
+		</subclass>
 		
-		<joined-subclass name="com.spring.HibernateTestDemo.SalesPerson" table="sales_tab">
-			<key column="EMP_ID"></key>	
+		<subclass name="com.spring.HibernateTestDemo.SalesPerson" discriminator-value="sp">
 			<property name="comm" column="COMM" type="int"></property>
-		</joined-subclass>
+		</subclass>
 	</class>
 </hibernate-mapping>
