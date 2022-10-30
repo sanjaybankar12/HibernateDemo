@@ -1,5 +1,9 @@
 package com.spring.HibernateTestDemo;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="sales_tab")
 public class SalesPerson extends Employee {
 
 	private int comm;

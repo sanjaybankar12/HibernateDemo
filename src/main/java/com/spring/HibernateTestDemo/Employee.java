@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="emp_tab")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Employee {
 
 	@Id
@@ -14,15 +15,7 @@ public class Employee {
 	private String name;
 	@Column(name="SALARY",nullable=true)
 	private int salary;
-	@Embedded
-	private Address address;
 	
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 	public int getId() {
 		return id;
 	}

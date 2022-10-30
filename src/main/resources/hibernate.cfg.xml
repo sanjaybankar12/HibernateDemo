@@ -14,6 +14,8 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>	
 		
 		<mapping class="com.spring.HibernateTestDemo.Employee"/>	
+		<mapping class="com.spring.HibernateTestDemo.WageEmployee"/>	
+		<mapping class="com.spring.HibernateTestDemo.SalesPerson"/>	
 		
 	</session-factory>
 </hibernate-configuration>
