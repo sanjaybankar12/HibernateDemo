@@ -1,18 +1,14 @@
 package com.spring.HibernateTestDemo;
 
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  * Hello world!
@@ -30,23 +26,26 @@ public class HibernateMain
 		Session s = sf.openSession();
 		Transaction tr = s.beginTransaction();
 		
-		Employee e = new Employee();
-		e.setName("ravi");
-		e.setSalary(45000);
-		s.save(e);
+		Vehicle v1 = new Vehicle();
+		v1.setId(1);
+		v1.setName("BMW");
 		
-		WageEmployee we = new WageEmployee();
-		we.setName("sham");
-		we.setSalary(55000);
-		we.setHr(12);
-		we.setRate(200);
-		s.save(we);
+		Vehicle v2 = new Vehicle();
+		v2.setId(2);
+		v2.setName("Car");
 		
-		SalesPerson sp = new SalesPerson();
-		sp.setName("Abc");
-		sp.setSalary(23000);
-		sp.setComm(200);
-		s.save(sp);
+		List<Vehicle> vs = new ArrayList<>();
+		vs.add(v1);
+		vs.add(v2);
+		
+		User u = new User();
+		u.setId(1);
+		u.setName("Ravi");		
+		u.setVehicles(vs);
+		
+		s.save(v1);
+		s.save(v2);
+		s.save(u);
 		
 		tr.commit();
 		s.clear();

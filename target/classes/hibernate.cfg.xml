@@ -13,9 +13,8 @@
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>	
 		
-		<mapping class="com.spring.HibernateTestDemo.Employee"/>	
-		<mapping class="com.spring.HibernateTestDemo.WageEmployee"/>	
-		<mapping class="com.spring.HibernateTestDemo.SalesPerson"/>	
+		<mapping class="com.spring.HibernateTestDemo.User"/>	
+		<mapping class="com.spring.HibernateTestDemo.Vehicle"/>	
 		
 	</session-factory>
 </hibernate-configuration>
