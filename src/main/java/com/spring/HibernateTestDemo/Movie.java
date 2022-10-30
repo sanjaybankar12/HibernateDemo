@@ -1,12 +1,13 @@
 package com.spring.HibernateTestDemo;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Movie {
 
 	private int id;
 	private String name;
-	private List<Song> songs;
+	private Map<String,String> hm = new HashMap<>();
 	
 	public int getId() {
 		return id;
@@ -20,12 +21,11 @@ public class Movie {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Song> getSongs() {
-		return songs;
+	public Map<String, String> getHm() {
+		return hm;
 	}
-	public void setSongs(List<Song> songs) {
-		this.songs = songs;
-	}
-	
+	public void setHm(Map<String, String> hm) {
+		this.hm = hm;
+	}	
 	
 }

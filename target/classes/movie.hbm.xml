@@ -5,20 +5,14 @@
 <hibernate-mapping>
 	<class name="com.spring.HibernateTestDemo.Movie" table="movie_tab">
 		<id name="id" column="M_ID" type="int">
-			<generator class="assigned"></generator>
+			<generator class="increment"></generator>
 		</id>
 		<property name="name" column="MOVIE_NAME" type="string"></property>
-		<list name="songs"  cascade="all">
-			<key column="MOVIE_ID"></key>
-			<index column="SONG_INDX"></index>
-			<one-to-many class="com.spring.HibernateTestDemo.Song"></one-to-many>
-		</list>		
+		<map name="hm" cascade="all" table="movie_actor_tab">
+			<key column="M_ID"></key>
+			<index column="TYPE" type="string"></index>
+			<element column="KVALUE" type="string"></element>
+		</map>	
 	</class>
-	
-	<class name="com.spring.HibernateTestDemo.Song" table="song_tab">
-		<id name="id" column="S_ID" type="int">
-			<generator class="assigned"></generator>
-		</id>
-		<property name="name" column="SONG_NAME" type="string"></property>	
-	</class>
+		
 </hibernate-mapping>

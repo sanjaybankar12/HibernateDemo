@@ -4,7 +4,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,23 +31,12 @@ public class HibernateMain
 		Transaction tr = s.beginTransaction();
 		
 		Movie m = new Movie();
-		m.setId(1);
 		m.setName("Dil Chahata hai");
-		List<Song> songs = new ArrayList<>();
-		Song s1 = new Song();
-		s1.setId(1);
-		s1.setName("dil chahata hai");
-		songs.add(s1);
-		
-		Song s2 = new Song();
-		s2.setId(2);
-		s2.setName("Jane kyun");
-		songs.add(s2);
-		
-		m.setSongs(songs );
-		
-		s.save(s1);
-		s.save(s2);
+		Map<String, String> hm = new HashMap<>();
+		hm.put("actor", "Amir");
+		hm.put("actress", "Priti");
+		m.setHm(hm );
+	
 		s.save(m);
 		
 		tr.commit();
