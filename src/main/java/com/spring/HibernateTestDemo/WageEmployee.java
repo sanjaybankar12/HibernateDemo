@@ -1,10 +1,12 @@
 package com.spring.HibernateTestDemo;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="wage_tab")
+@DiscriminatorValue("we")
 public class WageEmployee extends Employee {
 
 	private int hr;

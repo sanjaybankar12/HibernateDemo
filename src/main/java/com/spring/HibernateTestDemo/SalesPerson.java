@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="sales_tab")
+@DiscriminatorValue("sp")
 public class SalesPerson extends Employee {
 
 	private int comm;
