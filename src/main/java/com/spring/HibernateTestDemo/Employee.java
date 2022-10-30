@@ -14,7 +14,15 @@ public class Employee {
 	private String name;
 	@Column(name="SALARY",nullable=true)
 	private int salary;
+	@Embedded
+	private Address address;
 	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	public int getId() {
 		return id;
 	}

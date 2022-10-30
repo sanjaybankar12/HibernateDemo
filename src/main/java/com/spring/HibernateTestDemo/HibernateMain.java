@@ -33,7 +33,10 @@ public class HibernateMain
 		Employee e = new Employee();
 		e.setName("ravi");
 		e.setSalary(45000);
-		
+		Address address = new Address();
+		address.setCity("Pune");
+		address.setState("MH");
+		e.setAddress(address );
 		s.save(e);
 		
 		tr.commit();
