@@ -13,13 +13,15 @@
 			<type name="int"></type>
 		</property>
 		
-		<union-subclass name="com.spring.HibernateTestDemo.WageEmployee" table="wage_tab">
+		<joined-subclass name="com.spring.HibernateTestDemo.WageEmployee" table="wage_tab">
+			<key column="EMP_ID"></key>
 			<property name="hr" column="HOUR" type="int"></property>
 			<property name="rate" column="RATE" type="int"></property>
-		</union-subclass>
+		</joined-subclass>
 		
-		<union-subclass name="com.spring.HibernateTestDemo.SalesPerson" table="sales_tab">
+		<joined-subclass name="com.spring.HibernateTestDemo.SalesPerson" table="sales_tab">
+			<key column="EMP_ID"></key>	
 			<property name="comm" column="COMM" type="int"></property>
-		</union-subclass>
+		</joined-subclass>
 	</class>
 </hibernate-mapping>
