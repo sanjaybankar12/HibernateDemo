@@ -2,15 +2,17 @@ package com.spring.HibernateTestDemo;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name="emp_tab")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="EMP_TYPE", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("e")
+@NamedNativeQuery(name="byStartwithA", query="select name from emp_tab where name like ?1")
+@Cacheable
+@org.hibernate.annotations.Cache(usage= CacheConcurrencyStrategy.READ_ONLY)
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy =  GenerationType.AUTO)
+	@GeneratedValue(strategy =  GenerationType.IDENTITY)
 	@Column(name="ID",unique=true)
 	private int id;
 	@Column(name="NAME",nullable=true)

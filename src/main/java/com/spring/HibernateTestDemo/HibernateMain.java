@@ -1,14 +1,13 @@
 package com.spring.HibernateTestDemo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
+
+
 
 /**
  * Hello world!
@@ -25,31 +24,22 @@ public class HibernateMain
 
 		Session s = sf.openSession();
 		Transaction tr = s.beginTransaction();
-		
-		User u = new User();
-		u.setName("Ravi");	
-		
-		Vehicle v1 = new Vehicle();
-		v1.setName("BMW");
-		
-		Vehicle v2 = new Vehicle();
-		v2.setName("Car");
-		
-		v1.setUser(u);
-		v2.setUser(u);
+		System.out.println("First Session started...");
 
+		Employee e = s.get(Employee.class, 1);
+		System.out.println(e);
 		
-		List<Vehicle> vs = new ArrayList<>();
-		vs.add(v1);
-		vs.add(v2);		
-			
-		u.setVehicles(vs);
-			
 		
-		s.save(u);
+		tr.commit();
+		s.clear();
+		s.close();
 		
-		s.save(v1);
-		s.save(v2);
+		s = sf.openSession();
+		tr = s.beginTransaction();
+		System.out.println("Second Session started...");
+		Employee e1 = s.get(Employee.class, 1);
+		System.out.println(e1);
+
 		
 		tr.commit();
 		s.clear();
