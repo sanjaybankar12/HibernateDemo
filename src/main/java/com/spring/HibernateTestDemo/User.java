@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -20,13 +21,12 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	@Column(name="ID",unique=true)
 	private int id;
 	@Column(name="NAME",nullable=true)
 	private String name;
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinTable(name="user_veh_tab",joinColumns = @JoinColumn(name="U_ID"),inverseJoinColumns = @JoinColumn(name="V_ID"))
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="user")
 	private List<Vehicle> vehicles;	
 	
 	public List<Vehicle> getVehicles() {

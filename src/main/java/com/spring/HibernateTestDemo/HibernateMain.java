@@ -26,30 +26,34 @@ public class HibernateMain
 		Session s = sf.openSession();
 		Transaction tr = s.beginTransaction();
 		
+		User u = new User();
+		u.setName("Ravi");	
+		
 		Vehicle v1 = new Vehicle();
-		v1.setId(1);
 		v1.setName("BMW");
 		
 		Vehicle v2 = new Vehicle();
-		v2.setId(2);
 		v2.setName("Car");
+		
+		v1.setUser(u);
+		v2.setUser(u);
+
 		
 		List<Vehicle> vs = new ArrayList<>();
 		vs.add(v1);
-		vs.add(v2);
-		
-		User u = new User();
-		u.setId(1);
-		u.setName("Ravi");		
+		vs.add(v2);		
+			
 		u.setVehicles(vs);
+			
+		
+		s.save(u);
 		
 		s.save(v1);
 		s.save(v2);
-		s.save(u);
 		
 		tr.commit();
 		s.clear();
-		s.clear();
+		s.close();
 		
 				
     	
